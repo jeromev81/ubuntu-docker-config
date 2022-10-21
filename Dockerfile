@@ -6,7 +6,7 @@ RUN apt-get update -qq \
 
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 RUN add-apt-repository \ 
-    "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu   jammy stable"
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu   jammy stable"
 
 RUN apt-get update -qq \
     && apt-get install docker-ce -y
