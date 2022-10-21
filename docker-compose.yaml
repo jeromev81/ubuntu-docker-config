@@ -4,3 +4,6 @@ services:
   jenkins:
     build:
       context: .
+    restart: always
+    labels:
+      - "traefik.http.routers.jenkins.rule=Host(`jenkins.euzeo.be`)"
