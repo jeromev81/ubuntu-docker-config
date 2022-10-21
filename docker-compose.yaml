@@ -25,3 +25,5 @@ services:
       - 50000:50000
     labels:
       - "traefik.http.routers.jenkins.rule=Host(`jenkins.euzeo.be`)"
+    volumes:
+      - './jenkins_home/:/var/jenkins_home'
