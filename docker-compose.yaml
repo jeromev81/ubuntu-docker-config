@@ -19,18 +19,12 @@ services:
   gitlab:
     image: 'gitlab/gitlab-ee:latest'
     restart: always
-    depends_on: 
-      - 'reverse-proxy'
-    hostname: 'gitlab.example.com'
+    hostname: 'gitlab.euzeo.be'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'https://gitlab.euzeo.be'
         # Add any other gitlab.rb configuration here, each on its own line
-    labels:
-      - "traefik.http.routers.gitlab.rule=Host(`gitlab.euzeo.be`)"
-      - "traefik.https.routers.gitlab.rule=Host(`gitlab.euzeo.be`)"
     ports:
-      - '88:80'
       - '443:443'
       - '2022:22'
     volumes:
