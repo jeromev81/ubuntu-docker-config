@@ -29,7 +29,7 @@ services:
     labels:
       - "traefik.http.routers.jenkins.rule=Host(`gitlab.euzeo.be`)"
     ports:
-      - '80:80'
+      - '88:80'
       - '443:443'
       - '22:22'
     volumes:
