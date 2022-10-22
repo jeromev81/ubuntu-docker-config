@@ -27,7 +27,7 @@ services:
         external_url 'https://gitlab.euzeo.be'
         # Add any other gitlab.rb configuration here, each on its own line
     labels:
-      - "traefik.http.routers.jenkins.rule=Host(`gitlab.euzeo.be`)"
+      - "traefik.http.routers.gitlab.rule=Host(`gitlab.euzeo.be`)"
     ports:
       - '88:80'
       - '443:443'
