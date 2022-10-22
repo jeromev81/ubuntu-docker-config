@@ -16,6 +16,28 @@ services:
       # So that Traefik can listen to the Docker events
       - /var/run/docker.sock:/var/run/docker.sock
 
+  gitlab:
+    image: 'gitlab/gitlab-ee:latest'
+    restart: always
+    depends_on: 
+      - 'reverse-proxy'
+    hostname: 'gitlab.example.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.euzeo.be'
+        # Add any other gitlab.rb configuration here, each on its own line
+    labels:
+      - "traefik.http.routers.jenkins.rule=Host(`gitlab.euzeo.be`)"
+    ports:
+      - '80:80'
+      - '443:443'
+      - '22:22'
+    volumes:
+      - '$GITLAB_HOME/config:/etc/gitlab'
+      - '$GITLAB_HOME/logs:/var/log/gitlab'
+      - '$GITLAB_HOME/data:/var/opt/gitlab'
+    shm_size: '256m'
+
   jenkins:
     build:
       context: .
